@@ -1,14 +1,16 @@
 # Running larnd-sim
 
+This documenation primarily concerns only running the larnd-sim stage of the ND simulation and not details on how the code works (for now). More details on larnd-sim can be found in the [repository README](https://github.com/DUNE/larnd-sim/blob/develop/README.md).
+
 ## Installation
 
-The package is available on the DUNE GitHub repository and is installed via Pip:
+The package is available in the [larnd-sim repository](https://github.com/DUNE/larnd-sim) as part of the [DUNE GitHub organization](https://github.com/DUNE) and is installed via Pip:
 ```bash
 $> git clone https://github.com/DUNE/larnd-sim.git
 $> cd larnd-sim
 $> pip install .
 ```
-The simulation requires GPUs and the installation will attempt to install the appropriate version of `cupy` for your system. Larnd-sim has a couple optional set of dependencies aimed at development that add functionality for linting, type-checking, and wrapper for running larnd-sim.
+The simulation **requires GPUs** and the installation process will attempt to build the appropriate version of `cupy` for your system. Larnd-sim has a couple optional sets of dependencies (`runner` and `linting`) aimed at development that add functionality for linting, type-checking, and wrapper for running larnd-sim.
 
 It is highly recommended to use a virtual environment to isolate the larnd-sim environment. To create and activate a virtual environment, run:
 ```bash
@@ -111,4 +113,8 @@ larnd-sim:
 
 ## ND_Production
 
-The ND_Production repository has scripts for installing and running larnd-sim with the production environment located in `run-larnd-sim/`.
+The [ND_Production repository](https://github.com/DUNE/ND_Production) has scripts for installing and running larnd-sim located in `run-larnd-sim/` where the scripts assume to be working within the production environment.
+
+Install larnd-sim by running `run-larnd-sim/install_larnd_sim.sh` and it will create a virtual environment and install the most recent commit on the `develop` branch of larnd-sim and its necessary dependencies, including `cupy`. Once larnd-sim is installed, the environment can be activated by `source larnd.venv/bin/activate`.
+
+Run larnd-sim by running `run-larnd-sim/run_larnd_sim.sh` (pay attention to the dashes vs underscores), but it assumes the production environment is properly set through a series of shell environment variables starting with `ND_PRODUCTION_`.
